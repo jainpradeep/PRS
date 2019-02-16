@@ -1,5 +1,5 @@
-name: pokeappen
-description: A new Flutter application.
+name: pobappen
+description: Indian Oil Corporation Pat on Back Piplines Reconginzation Application for awarding pat on back.
 
 # The following defines the version and build number for your application.
 # A version number is three numbers separated by dots, like 1.2.43
@@ -15,7 +15,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-
+  http: ^0.12.0+1
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^0.1.2
@@ -23,19 +23,17 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
-
-
-# For information on the generic Dart part of this file, see the
-# following page: https://www.dartlang.org/tools/pub/pubspec
-
-# The following section is specific to Flutter.
+  dio: 1.0.0
+  intl: 0.15.7
+  shared_preferences: ^0.4.2
 flutter:
 
-  # The following line ensures that the Material Icons font is
-  # included with your application, so that you can use the icons in
-  # the material Icons class.
   uses-material-design: true
-
+  assets:
+    - assets/RecomendedPobs.json
+    - assets/ApporvedPobs.json
+    - assets/p.jpg
+    - assets/prs.png
   # To add assets to your application, add an assets section, like this:
   # assets:
   #  - images/a_dot_burr.jpeg

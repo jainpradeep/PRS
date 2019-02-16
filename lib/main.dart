@@ -1,104 +1,74 @@
 import 'dart:convert';
-
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
-import 'package:pokeappen/pokemon.dart';
-import 'package:pokeappen/pokemondetail.dart';
+import 'package:pobappen/pob.dart';
+import 'package:flutter/services.dart' show rootBundle;
+import 'package:dio/dio.dart';
+import 'package:pobappen/pobDetails.dart';
+import 'package:intl/intl.dart';
+import 'login_page.dart';
+import 'recomendedPobs.dart';
+import 'pobScaffold.dart';
+import 'dart:async';
+import 'package:shared_preferences/shared_preferences.dart';
+
+Future<Map<String, dynamic>> parseJsonFromAssets(String assetsPath) async {
+    print('--- Parse json from: $assetsPath');
+    return rootBundle.loadString(assetsPath)
+        .then((jsonStr) => jsonDecode(jsonStr));
+  }
+
+typedef void StringCallback(String val);
+final StringCallback callback = null;
 
 void main() => runApp(MaterialApp(
-      title: "Poke App",
-      home: HomePage(),
+      title: "Pat on Back App",
+      home: PobApp(),
       debugShowCheckedModeBanner: false,
-    ));
+));
 
-class HomePage extends StatefulWidget {
+
+
+class PobApp extends StatefulWidget {
   @override
-  HomePageState createState() {
-    return new HomePageState();
-  }
+  PobAppState createState() => new PobAppState();
 }
 
-class HomePageState extends State<HomePage> {
-  var url =
-      "https://raw.githubusercontent.com/Biuni/PokemonGO-Pokedex/master/pokedex.json";
-
-  PokeHub pokeHub;
-
+class PobAppState extends State<PobApp>{
+  bool authenticated = false;
+  SharedPreferences prefs = null;
   @override
   void initState() {
-    super.initState();
-
-    fetchData();
+      checkLogin();
+      super.initState();
   }
 
-  fetchData() async {
-    var res = await http.get(url);
-    var decodedJson = jsonDecode(res.body);
-    pokeHub = PokeHub.fromJson(decodedJson);
-    print(pokeHub.toJson());
-    setState(() {});
+  checkLogin() async {
+   prefs = await SharedPreferences.getInstance();
+      bool authenticated = prefs.getBool('authenticated');
+      setState(() { });
   }
+  
+  final routes = <String, WidgetBuilder>{
+    LoginPage.tag: (context) => LoginPage(),
+    PobScaffold.tag: (context) => PobScaffold(),
+  };
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text("Poke App"),
-        backgroundColor: Colors.cyan,
+    return MaterialApp(
+      title: 'Pat on Back App',
+      debugShowCheckedModeBanner: false,
+      theme: ThemeData(
+        primarySwatch: Colors.lightBlue,
+        fontFamily: 'Nunito',
       ),
-      body: pokeHub == null
-          ? Center(
-              child: CircularProgressIndicator(),
-            )
-          : GridView.count(
-              crossAxisCount: 2,
-              children: pokeHub.pokemon
-                  .map((poke) => Padding(
-                        padding: const EdgeInsets.all(2.0),
-                        child: InkWell(
-                          onTap: () {
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => PokeDetail(
-                                          pokemon: poke,
-                                        )));
-                          },
-                          child: Hero(
-                            tag: poke.img,
-                            child: Card(
-                              child: Column(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceEvenly,
-                                children: <Widget>[
-                                  Container(
-                                    height: 100.0,
-                                    width: 100.0,
-                                    decoration: BoxDecoration(
-                                        image: DecorationImage(
-                                            image: NetworkImage(poke.img))),
-                                  ),
-                                  Text(
-                                    poke.name,
-                                    style: TextStyle(
-                                      fontSize: 20.0,
-                                      fontWeight: FontWeight.bold,
-                                    ),
-                                  )
-                                ],
-                              ),
-                            ),
-                          ),
-                        ),
-                      ))
-                  .toList(),
-            ),
-      drawer: Drawer(),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {},
-        backgroundColor: Colors.cyan,
-        child: Icon(Icons.refresh),
-      ),
+      home: (this.authenticated == false 
+            ? LoginPage() 
+            : PobScaffold()),
+      routes: routes,
     );
   }
 }
+
+

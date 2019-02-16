@@ -1,0 +1,65 @@
+[
+  {
+    "name": "ID"
+  },
+  {
+    "name": "TEAMID"
+  },
+  {
+    "name": "NOMINATED_OFFICER"
+  },
+  {
+    "name": "NOMINEE_REGION"
+  },
+  {
+    "name": "NOMINATED_BY"
+  },
+  {
+    "name": "NOMINATING_REGION"
+  },
+  {
+    "name": "DT_NOMINATION"
+  },
+  {
+    "name": "NOMINATING_REMARKS"
+  },
+  {
+    "name": "RECOMMENDED_BY"
+  },
+  {
+    "name": "RECOMM_REGION"
+  },
+  {
+    "name": "DT_RECOMM"
+  },
+  {
+    "name": "RECOMM_REMARKS"
+  },
+  {
+    "name": "PRS_REPORTING_BASE_UNIT_HQ"
+  },
+  {
+    "name": "APPROVING_EMPNO"
+  },
+  {
+    "name": "APPROVING_EMPNAME"
+  },
+  {
+    "name": "LOCATION"
+  },
+  {
+    "name": "DESGN"
+  },
+  {
+    "name": "SAP_DEPT"
+  },
+  {
+    "name": "MONTH"
+  },
+  {
+    "name": "YEAR"
+  },
+  {
+    "name": "FY"
+  }
+]

@@ -1,0 +1,38 @@
+[
+  {
+    "name": "LOCATION"
+  },
+  {
+    "name": "EMPNO"
+  },
+  {
+    "name": "EMPNAME"
+  },
+  {
+    "name": "DESGN"
+  },
+  {
+    "name": "DEPT"
+  },
+  {
+    "name": "REGION"
+  },
+  {
+    "name": "FIN_YEAR"
+  },
+  {
+    "name": "ANNUAL_CEILING"
+  },
+  {
+    "name": "CHANGE_DATE"
+  },
+  {
+    "name": "MONTHLY_CEILING"
+  },
+  {
+    "name": "ROLE"
+  },
+  {
+    "name": "REMARKS"
+  }
+]

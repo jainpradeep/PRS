@@ -1,0 +1,30 @@
+[
+  {
+    "STATUS": 0,
+    "STATUS_TEXT": "Pending for Approval by Recommending Authority"
+  },
+  {
+    "STATUS": 1,
+    "STATUS_TEXT": "Pending for Approval by Approving Authority"
+  },
+  {
+    "STATUS": 2,
+    "STATUS_TEXT": "Rejected by Recommending Authority"
+  },
+  {
+    "STATUS": 3,
+    "STATUS_TEXT": "Approved by Approving Authority"
+  },
+  {
+    "STATUS": 4,
+    "STATUS_TEXT": "Rejected by Approving Authority"
+  },
+  {
+    "STATUS": 5,
+    "STATUS_TEXT": "Lapsed with Recommending Authority"
+  },
+  {
+    "STATUS": 6,
+    "STATUS_TEXT": "Lapsed with Approving Authority"
+  }
+]
